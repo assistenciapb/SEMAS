@@ -1,0 +1,156 @@
+:root{
+  --bg:#f6f7fb;
+  --panel:#ffffff;
+  --text:#1f2937;
+  --muted:#6b7280;
+  --line:#e5e7eb;
+  --primary:#2563eb;
+  --primary-700:#1d4ed8;
+  --danger:#ef4444;
+  --danger-700:#dc2626;
+  --header:#111827;
+}
+*{ box-sizing:border-box; }
+html, body{ 
+  height:100%; 
+  margin:0; 
+}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  display:flex; 
+  flex-direction:column;
+}
+
+/* Header */
+.app-header{
+  background:var(--header);
+  color:#fff;
+  padding:16px 20px;
+  display:flex; gap:24px; align-items:center; flex-wrap:wrap;
+}
+.app-header h1{ margin:0; font-size:1.25rem; }
+.search-wrap{ display:flex; flex-direction:column; gap:6px; flex:1; min-width:260px; }
+#searchInput{
+  width:100%; max-width:640px; padding:12px 14px;
+  border-radius:10px; border:1px solid transparent; outline:none;
+}
+.hint{ margin:0; color:#fbbf24; font-size:.9rem; }
+
+/* Main */
+.app-main{ 
+  flex:1; 
+  min-height:0; /* permite scroll interno */
+  display:flex; 
+  height: calc(100vh - 72px); /* altura total menos header */
+}
+
+/* Sidebar */
+.sidebar{
+  width:300px; 
+  padding:18px; 
+  border-right:1px solid var(--line);
+  background:#eef2f7; 
+  display:flex; 
+  flex-direction:column; 
+  gap:16px;
+  overflow-y:auto;
+  max-height:100%; /* não ultrapassa app-main */
+}
+.sidebar-head h2{ margin:0; font-size:1.05rem; }
+.new-list{ background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:14px; }
+.new-list .new-list-row{ display:flex; gap:8px; margin-top:8px; }
+.new-list input{
+  flex:1; padding:10px; border:1px solid var(--line); border-radius:10px; background:#fbfdff;
+}
+.muted{ color:var(--muted); font-size:.9rem; }
+
+.list-nav{
+  list-style:none; padding:0; margin:0; overflow:auto; flex:1;
+  max-height:calc(100% - 120px); /* ajusta para caber dentro da sidebar */
+}
+.list-nav li{
+  display:flex; align-items:center; justify-content:space-between;
+  background:var(--panel); border:1px solid var(--line); border-radius:12px;
+  padding:10px 12px; margin-bottom:10px; cursor:pointer; transition:background .2s ease;
+}
+.list-nav li:hover{ background:#f8fafc; }
+.list-nav .nome-lista{ font-weight:600; }
+.btn-mini{
+  border:none; border-radius:8px; padding:6px 10px; cursor:pointer; color:#fff; background:var(--danger);
+}
+.btn-mini:hover{ background:var(--danger-700); }
+
+/* Conteúdo */
+.content{
+  flex:1;
+  padding:24px;
+  overflow-y:auto; /* scroll interno */
+  min-height:0;
+  display:flex; flex-direction:column;
+}
+.content-head{ display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:12px; }
+.title{ margin:0; font-size:1.25rem; }
+.actions{ display:flex; gap:10px; }
+
+/* Card + inputs */
+.card{
+  background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:16px; margin-bottom:16px;
+  box-shadow:0 1px 2px rgba(16,24,40,.04);
+}
+.label{ display:block; font-weight:600; margin-bottom:8px; }
+textarea{
+  width:100%; padding:12px; border-radius:10px; border:1px solid var(--line); resize:vertical; background:#fbfdff;
+}
+.row{ display:flex; gap:12px; align-items:center; }
+.between{ justify-content:space-between; }
+
+/* Lista de nomes / resultados */
+.names{
+  list-style:none; padding:0; margin:0; overflow-y:auto;
+  max-height:400px; /* altura máxima com scroll */
+}
+.names li{
+  display:flex; align-items:center; justify-content:space-between;
+  background:var(--panel); border:1px solid var(--line); border-radius:12px;
+  padding:12px 14px; margin-bottom:10px; box-shadow:0 1px 2px rgba(16,24,40,.04);
+}
+.names .nome{ font-weight:500; }
+.row-actions{ display:flex; gap:8px; }
+
+/* Botões */
+.btn{
+  border:none; border-radius:10px; padding:10px 14px; cursor:pointer; font-weight:600;
+}
+.btn.primary{ background:var(--primary); color:#fff; }
+.btn.primary:hover{ background:var(--primary-700); }
+.btn.danger{ background:var(--danger); color:#fff; }
+.btn.danger:hover{ background:var(--danger-700); }
+
+/* Responsivo */
+@media (max-width: 900px){
+  .sidebar{ width:260px; }
+}
+@media (max-width: 720px){
+  .app-main{
+    flex-direction: row; /* mantém lado a lado */
+    min-height: calc(100vh - 72px); /* altura total menos header */
+  }
+  .sidebar{
+    width:200px; /* reduz largura da sidebar */
+    max-height:100%;
+    overflow-y:auto;
+  }
+  .content{
+    flex:1;
+    overflow-y:auto;
+    min-height:0;
+  }
+  .list-nav{
+    max-height: calc(100% - 120px); /* sidebar scroll */
+  }
+  .names{
+    max-height:400px; /* mantém scroll interno */
+  }
+}

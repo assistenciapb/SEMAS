@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SUAS</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="app-header">
+    <h1>Cadastros Fisicos</h1>
+    <div class="search-wrap">
+      <input type="text" id="searchInput" placeholder="🔍 Buscar funcionário em todas as caixas..." />
+      <p class="hint">Resultados aparecem abaixo (clique em “Abrir Caixa” para ir direto).</p>
+    </div>
+  </header>
+
+  <main class="app-main">
+    <!-- Sidebar com listas -->
+    <aside id="sidebar" class="sidebar">
+      <div class="sidebar-head">
+        <h2>Caixas</h2>
+      </div>
+
+      <div class="new-list">
+        <label for="novaInicial">Nova Caixa por inicial</label>
+        <div class="new-list-row">
+          <input id="novaInicial" type="text" maxlength="2" placeholder="AA" />
+          <button id="btnCriarLista" class="btn primary">Criar</button>
+        </div>
+        <small class="muted">Ex.: se já existem A1 e A2, cria A3 automaticamente.</small>
+      </div>
+
+      <ul id="listaDeListas" class="list-nav"></ul>
+    </aside>
+
+    <!-- Área central -->
+    <section id="conteudo" class="content">
+      <div class="content-head">
+        <h2 id="tituloLista" class="title">Selecione uma Caixa</h2>
+        <div id="acoesLista" class="actions" style="display:none;">
+          <button id="btnExcluirLista" class="btn danger">Excluir Caixa</button>
+        </div>
+      </div>
+
+      <div id="adicaoNomes" class="card" style="display:none;">
+        <label for="novoNomeTextarea" class="label">Adicionar nomes</label>
+        <textarea id="novoNomeTextarea" rows="6" placeholder="Cole aqui vários nomes:
+- um por linha
+- ou separados por vírgula ,
+- ou por ponto e vírgula ;"></textarea>
+        <div class="row between">
+          <button id="btnAdicionarNomes" class="btn primary">Adicionar Nome(s)</button>
+          <span class="muted">Dica: você pode colar direto do Word.</span>
+        </div>
+      </div>
+
+      <ul id="listaNomes" class="names"></ul>
+    </section>
+  </main>
+
+  <!-- Script modular separado -->
+  <script type="module" src="script.js"></script>
+</body>
+
+</html>
