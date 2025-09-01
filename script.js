@@ -230,5 +230,10 @@ btnExcluirLista.addEventListener("click", ()=>{ if(listaSelecionada) excluirList
 btnAdicionarNomes.addEventListener("click", adicionarNomes);
 searchInput.addEventListener("input", e=>executarBusca(e.target.value));
 
+// ===== Botão Visitas =====
+document.getElementById("btnVisitas").addEventListener("click", () => {
+  window.open("https://assistenciapb.github.io/agendamentos/", "_blank");
+});
+
 // ===== Inicialização =====
 carregarListas();
