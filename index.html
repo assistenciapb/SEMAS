@@ -10,7 +10,10 @@
   <header class="app-header">
     <h1>Cadastros Fisicos</h1>
     <div class="search-wrap">
-      <input type="text" id="searchInput" placeholder="🔍 Buscar funcionário em todas as caixas..." />
+      <div class="row">
+        <input type="text" id="searchInput" placeholder="🔍 Buscar funcionário em todas as caixas..." />
+        <button id="btnVisitas" class="btn primary">Visitas</button>
+      </div>
       <p class="hint">Resultados aparecem abaixo (clique em “Abrir Caixa” para ir direto).</p>
     </div>
   </header>
@@ -62,5 +65,4 @@
   <!-- Script modular separado -->
   <script type="module" src="script.js"></script>
 </body>
-
 </html>
